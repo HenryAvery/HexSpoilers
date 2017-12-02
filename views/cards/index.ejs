@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+    
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Hex TCG Spoilers</h1>
+                <p>Checkout all the cards form the upcoming set!</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="/cards/new">Add New Card</a>
+                </p>
+            </div>
+        </header>
+        <% cards.forEach((card) => { %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= card.image %>">
+                    <div class="caption">
+                        <h4><%= card.name %></h4>  
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% include ../partials/footer %>
