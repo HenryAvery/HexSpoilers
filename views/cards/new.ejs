@@ -1,24 +1,26 @@
 <% include ../partials/header %>
 <div class="container">
     <div class="row">
-        <h1>Add a new Card</h1>
-        <form action="/cards" method="POST">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input class="form-control" type="text" name="card[name]" placeholder="Vampire King">
-            </div>
-            <div class="class="form-group"">
-                <label for="image">Image Url</label>
-                <input class="form-control" type="text" name="card[image]" placeholder="http://...">
-            </div>
-            <div class="class="form-group"">
-                <label for="description">Description/Impressions</label>
-                <input class="form-control" type="text" name="card[description]" placeholder="I love this card!!!">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-            </div>            
-        </form>
-        <a href="/cards">Go Back</a>
+        <div class="form-container">
+            <h1 class="form-title">Add a new Card</h1>
+                <form action="/cards" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="card[name]" placeholder="Vampire King">
+                    </div>
+                    <div class="form-group ">
+                        <label for="image">Image Url</label>
+                        <input class="form-control" type="text" name="card[image]" placeholder="http://...">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description/Impressions</label>
+                        <input class="form-control" type="text" name="card[description]" placeholder="I love this card!!!">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                    </div>            
+                </form>
+            <a href="/cards">Go Back</a>
+        </div>
     </div>
 </div>

@@ -6,7 +6,8 @@ const express    = require("express"),
       
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/hextcg_spoilers")
-app.use(bodyParser.urlencoded({extended: true}));    
+app.use(bodyParser.urlencoded({extended: true}));   
+app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");      
 
 //Landing Page
