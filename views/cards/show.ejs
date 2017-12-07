@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Menu</p>
+            <div class="list-group">
+                <li class="list-group-item">Next Card</li>
+                <li class="list-group-item">Previous Card</li>
+                <li class="list-group-item">Back to gallery</li>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center"><%= card.name %></h1>
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= card.image %>">
+                <div class="caption-full">
+                    <p class="<%= card.description %>"></p>
+                </div>
+            </div>
+            <a href="/cards">Go Back</a>
+        </div>
+    </div>
+</div>
+<% include ../partials/footer %>
