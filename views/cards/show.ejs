@@ -9,12 +9,12 @@
                 <li class="list-group-item">Back to gallery</li>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
             <h1 class="text-center"><%= card.name %></h1>
             <div class="thumbnail">
-                <img class="img-responsive" src="<%= card.image %>">
+                <img class="img-rounded img-fluid" src="<%= card.image %>">
                 <div class="caption-full">
-                    <p class="<%= card.description %>"></p>
+                    <p><%= card.description %></p>
                 </div>
             </div>
             <a href="/cards">Go Back</a>
