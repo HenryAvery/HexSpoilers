@@ -11,14 +11,16 @@
             </div>
         </header>
         <% cards.forEach((card) => { %>
+        <a href="/cards/<%= card._id %>">
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">
                     <img src="<%= card.image %>">
                     <div class="caption">
-                        <h4><%= card.name %></h4>  
+                        <h4 class="text-center"><%= card.name %></h4>  
                     </div>
                 </div>
             </div>
+            </a>
         <% }) %>
     </div>
 </div>

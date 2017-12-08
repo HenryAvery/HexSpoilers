@@ -5,7 +5,7 @@ const express    = require("express"),
       Card = require("./models/card");
       
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/hextcg_spoilers")
+mongoose.connect("mongodb://localhost/hextcg_spoilers");
 app.use(bodyParser.urlencoded({extended: true}));   
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");      
@@ -36,14 +36,23 @@ app.post("/cards", (req, res) => {
     Card.create(req.body.card, (err, newCard) => {
         if(err){
             console.log(err);
-            res.render("new")
+            res.render("new");
         }else {
             res.redirect("/cards");
         }
     });
 });   
 
-
+//Show
+app.get("/cards/:id", (req, res) => {
+    Card.findById(req.params.id, (err, foundCard) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.render("cards/show", {card: foundCard});
+        }
+    });
+});
      
      
      
