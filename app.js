@@ -78,7 +78,7 @@ app.put("/cards/:id", (req, res) => {
         }     
     });
 });
-//Delete
+//Destroy
 app.delete("/cards/:id", (req, res) => {
    Card.findByIdAndRemove(req.params.id, (err) => {
      if(err){
