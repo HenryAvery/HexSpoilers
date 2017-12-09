@@ -78,7 +78,16 @@ app.put("/cards/:id", (req, res) => {
         }     
     });
 });
-     
+//Delete
+app.delete("/cards/:id", (req, res) => {
+   Card.findByIdAndRemove(req.params.id, (err) => {
+     if(err){
+         console.log(err);
+     }else{
+         res.redirect("/cards");
+     }  
+   });
+});
       
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server started");

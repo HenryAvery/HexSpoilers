@@ -16,6 +16,9 @@
                 <div class="caption-full">
                     <p><%= card.description %></p>
                     <a class="btn btn-warning" href="/cards/<%= card._id %>/edit">Edit</a>
+                    <form class="delete-form" action="/cards/<%= card._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
             <a href="/cards">Go Back</a>
