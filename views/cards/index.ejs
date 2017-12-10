@@ -1,26 +1,27 @@
 <% include ../partials/header %>
     
-    <div class="container">
-        <header class="jumbotron">
-            <div class="container">
-                <h1 class="text-center">Hex Spoilers</h1>
-                <p>Checkout all the cards form the upcoming set!</p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="/cards/new">Add New Card</a>
-                </p>
-            </div>
-        </header>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container text-center">
+            <h1>Hex Spoilers</h1>
+            <p>Checkout all the cards form the upcoming set!</p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/cards/new">Add New Card</a>
+            </p>
+        </div>
+    </header>
+    <div class="row flex">
         <% cards.forEach((card) => { %>
-        <a href="/cards/<%= card._id %>">
-            <div class="col-md-3 col-sm-6 col-xs-5">
-                <div class="thumbnail">
-                    <img src="<%= card.image %>">
-                    <div class="caption">
-                        <h4 class="text-center"><%= card.name %></h4>  
+           <div class="col-md-3 col-sm-6 col-xs-12">
+                <a href="/cards/<%= card._id %>">
+                    <div class="thumbnail">
+                        <img src="<%= card.image %>">
+                        <div class="caption">
+                            <h4 class="text-center"><%= card.name %></h4>  
+                        </div>
                     </div>
-                </div>
+                 </a>
             </div>
-            </a>
         <% }) %>
     </div>
 </div>
