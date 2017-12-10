@@ -3,7 +3,7 @@
     <div class="container">
         <header class="jumbotron">
             <div class="container">
-                <h1>Hex TCG Spoilers</h1>
+                <h1 class="text-center">Hex Spoilers</h1>
                 <p>Checkout all the cards form the upcoming set!</p>
                 <p>
                     <a class="btn btn-primary btn-lg" href="/cards/new">Add New Card</a>
@@ -12,7 +12,7 @@
         </header>
         <% cards.forEach((card) => { %>
         <a href="/cards/<%= card._id %>">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-sm-6 col-xs-5">
                 <div class="thumbnail">
                     <img src="<%= card.image %>">
                     <div class="caption">
@@ -24,18 +24,5 @@
         <% }) %>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <% include ../partials/footer %>
