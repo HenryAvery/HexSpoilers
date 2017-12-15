@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 
 //Show
 router.get("/:id", (req, res) => {
-    Card.findById(req.params.id, (err, foundCard) => {
+    Card.findById(req.params.id).populate("comments").exec((err, foundCard) => {
         if(err){
             console.log(err);
         }else{

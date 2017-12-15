@@ -21,7 +21,22 @@
                     </form>
                 </div>
             </div>
-            <a href="/cards">Go Back</a>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/cards/<%= card._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% card.comments.forEach( (comment) => { %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="pull-right">10 days ago</span>
+                            <p>
+                                <%= comment.text %>
+                            </p>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
         </div>
     </div>
 </div>

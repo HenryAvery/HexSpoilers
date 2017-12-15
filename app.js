@@ -4,8 +4,9 @@ const express    = require("express"),
       mongoose   = require("mongoose"),
       app        = express();
 
-
-const cardRoutes = require("./routes/cards");
+//requiring routes
+const cardRoutes = require("./routes/cards"),
+   commentRoutes = require("./routes/comments");
      
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/hextcg_spoilers");
@@ -15,6 +16,7 @@ app.use(methodOverride("_method"));
 app.set("view engine", "ejs");      
 
 app.use("/cards", cardRoutes);
+app.use("/cards/:id/comments", commentRoutes);
 
 
 
