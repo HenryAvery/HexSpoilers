@@ -6,6 +6,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black_linen_v2.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .form-container {
@@ -13,16 +15,31 @@ body {
     margin: 25px auto;
 }
 
+h4{
+    color: #9d9d9d;
+    
+    
+}
+a:hover h4{
+    color: #fff;
+    
+}
+a:hover {
+text-decoration: none;
+}
 .form-title{
     text-align: center;
 }
 
 .thumbnail img {
     width: 100%;
+    margin-bottom: 0px;
 }
 
 .thumbnail {
     padding: 0;
+    border: 0;
+    background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
 }
 
 .thumbnail .caption-full{
@@ -44,7 +61,16 @@ body {
   height: 60px;
   background-color: #f5f5f5;
 }
+
 .container .text-muted {
   margin: 20px 0;
   text-align: center;
+}
+
+.comments {
+    margin-top: 0px;
+}
+
+.main {
+    margin-top: 30px;
 }
