@@ -14,9 +14,9 @@
                 <div class="caption-full">
                     <h4><%=card.name%></h4>
                     <p><%= card.description %></p>
-                    <!--<p>-->
-                    <!--  <em>Submitted by: <%= card.author.username %></em>-->
-                    <!--</p>-->
+                    <p>
+                      <em>Submitted by: <%= card.author.username %></em>
+                    </p>
                     <a class="btn btn-warning" href="/cards/<%= card._id %>/edit">Edit</a>
                     <form class="delete-form" action="/cards/<%= card._id %>?_method=DELETE" method="POST">
                         <button class="btn btn-danger">Delete</button>
@@ -29,10 +29,12 @@
                 <div class="text-right">
                     <a class="btn btn-success" href="/cards/<%= card._id %>/comments/new">Add New Comment</a>
                 </div>
-                <hr>
+
                 <% card.comments.forEach( (comment) => { %>
                     <div class="row">
                         <div class="col-md-12">
+                            <hr>
+                            <strong><%= comment.author.username %></strong>
                             <span class="pull-right">10 days ago</span>
                             <p>
                                 <%= comment.text %>
@@ -41,6 +43,7 @@
                             <form class="delete-form" action="/cards/<%=card._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-xs btn-danger">Delete</button>
                             </form>
+                            
                         </div>
                     </div>
                 <% }); %>

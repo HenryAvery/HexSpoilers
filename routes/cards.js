@@ -20,6 +20,12 @@ router.get("/new", (req, res) => {
 
 //Create
 router.post("/", (req, res) => {
+    
+    req.body.card.author = {
+        id: req.user._id,
+        username: req.user.username            
+    };
+
     Card.create(req.body.card, (err, newCard) => {
         if(err){
             console.log(err);

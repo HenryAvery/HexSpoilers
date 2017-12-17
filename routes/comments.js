@@ -25,6 +25,9 @@ router.post("/", (req, res) => {
               if(err){
                   console.log(err);
               }else{
+                  comment.author.id = req.user._id;
+                  comment.author.username = req.user.username;
+                  comment.save();
                   card.comments.push(comment);
                   card.save();
                   res.redirect("/cards/" + card._id);
