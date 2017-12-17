@@ -16,6 +16,9 @@ body {
     color: #000;
     padding: 10px 60px 20px;
 }
+.jumbotron p {
+    color: #000;
+}
 
 .banner{
     color: orange !important;
@@ -32,7 +35,6 @@ body {
 
 h4{
     color: #9d9d9d;
-    
 }
 
 a:hover h4{
@@ -93,4 +95,12 @@ text-decoration: none;
 
 h1, label, p{
     color: #fdfdfd;
+}
+
+.well{
+    background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
+}
+
+hr{
+    border-color: #666;
 }
