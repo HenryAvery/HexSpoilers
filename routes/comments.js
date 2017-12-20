@@ -1,11 +1,13 @@
-const express = require("express"),
-         Card = require("../models/card"),
-      Comment = require("../models/comment"),
-       router = express.Router({mergeParams: true});
+const express    = require("express"),
+      Card       = require("../models/card"),
+      Comment    = require("../models/comment"),
+      middleware = require("../middleware"),
+      router     = express.Router({mergeParams: true}),
+      { isLoggedIn, checkCommentOwner } = middleware;
        
        
 //New
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
     Card.findById(req.params.id, (err, card) => {
         if(err){
             console.log(err);
@@ -16,7 +18,7 @@ router.get("/new", (req, res) => {
 });
 
 //Create
-router.post("/", (req, res) => {
+router.post("/", isLoggedIn, (req, res) => {
    Card.findById(req.params.id, (err, card) => {
        if(err){
            console.log(err);
@@ -38,7 +40,7 @@ router.post("/", (req, res) => {
 });
 
 //Edit
-router.get("/:comment_id/edit", (req, res) => {
+router.get("/:comment_id/edit", isLoggedIn, checkCommentOwner, (req, res) => {
     Card.findById(req.params.id, (err, foundCard) => {
         if(err){
             console.log(err);
@@ -55,7 +57,7 @@ router.get("/:comment_id/edit", (req, res) => {
 });
 
 //Update
-router.put("/:comment_id", (req, res) => {
+router.put("/:comment_id", isLoggedIn, checkCommentOwner, (req, res) => {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updatedComment ) => {
         if(err){
             console.log(err);
@@ -66,7 +68,7 @@ router.put("/:comment_id", (req, res) => {
 });
 
 //Destroy
-router.delete("/:comment_id", (req, res) => {
+router.delete("/:comment_id", isLoggedIn, checkCommentOwner, (req, res) => {
     Comment.findByIdAndRemove(req.params.comment_id, (err) => {
         if(err){
             console.log(err);

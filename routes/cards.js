@@ -1,7 +1,9 @@
 const express = require("express"),
-       router = express.Router(),
-         Card = require("../models/card");
-
+      router  = express.Router(),
+      Card    = require("../models/card"),
+      middleware = require("../middleware"),
+      {isLoggedIn, checkCardOwner} = middleware;
+      
 //Index
 router.get("/", (req, res) => {
     Card.find({}, (err, allCards) => {
@@ -14,12 +16,12 @@ router.get("/", (req, res) => {
 });
 
 //New
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
     res.render("cards/new");
 });
 
 //Create
-router.post("/", (req, res) => {
+router.post("/", isLoggedIn, (req, res) => {
     
     req.body.card.author = {
         id: req.user._id,
@@ -48,7 +50,7 @@ router.get("/:id", (req, res) => {
 });
      
 //Edit
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", isLoggedIn, checkCardOwner, (req, res) => {
     Card.findById(req.params.id, (err, foundCard) => {
         if(err){
             console.log(err);
@@ -59,7 +61,7 @@ router.get("/:id/edit", (req, res) => {
 });
 
 //Update
-router.put("/:id", (req, res) => {
+router.put("/:id", isLoggedIn, checkCardOwner, (req, res) => {
     Card.findByIdAndUpdate(req.params.id, req.body.card, (err, foundCard) => {
         if(err) {
             console.log(err);
@@ -69,7 +71,7 @@ router.put("/:id", (req, res) => {
     });
 });
 //Delete
-router.delete("/:id", (req, res) => {
+router.delete("/:id", isLoggedIn, checkCardOwner, (req, res) => {
    Card.findByIdAndRemove(req.params.id, (err) => {
      if(err){
          console.log(err);
