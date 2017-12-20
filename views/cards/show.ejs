@@ -17,19 +17,20 @@
                     <p>
                       <em>Submitted by: <%= card.author.username %></em>
                     </p>
-                    <a class="btn btn-warning" href="/cards/<%= card._id %>/edit">Edit</a>
-                    <form class="delete-form" action="/cards/<%= card._id %>?_method=DELETE" method="POST">
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
+                    <% if(currentUser && card.author.id.equals(currentUser._id)) { %>
+                        <a class="btn btn-warning" href="/cards/<%= card._id %>/edit">Edit</a>
+                        <form class="delete-form" action="/cards/<%= card._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-8 col-xs-10 col-xs-offset-1 comments">
+        <div class="col-md-4 col-md-offset-1 col-sm-8 col-sm-offset-3 col-xs-10 col-xs-offset-1  comments">
             <div class="well">
                 <div class="text-right">
                     <a class="btn btn-success" href="/cards/<%= card._id %>/comments/new">Add New Comment</a>
                 </div>
-
                 <% card.comments.forEach( (comment) => { %>
                     <div class="row">
                         <div class="col-md-12">
@@ -39,11 +40,12 @@
                             <p>
                                 <%= comment.text %>
                             </p>
+                            <% if(currentUser && card.author.id.equals(currentUser._id)){ %>
                             <a class="btn btn-xs btn-warning" href="/cards/<%=card._id %>/comments/<%=comment._id %>/edit">Edit</a>
                             <form class="delete-form" action="/cards/<%=card._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-xs btn-danger">Delete</button>
                             </form>
-                            
+                            <% } %>
                         </div>
                     </div>
                 <% }); %>
