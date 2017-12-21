@@ -1,12 +1,12 @@
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black_linen_v2.png");
+    margin-bottom: 60px;
+    background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black_linen_v2.png");
 }
 
 .jumbotron{
@@ -20,9 +20,10 @@ body {
     color: #000;
 }
 
-.banner{
-    color: orange !important;
+.navbar-header .banner{
+    color: orange;
     text-decoration: underline;
+    display: inline-block;
 }
 .newcard{
     margin-top: 15px;
@@ -42,7 +43,7 @@ a:hover h4{
     
 }
 a:hover {
-text-decoration: none;
+    text-decoration: none;
 }
 
 .form-title{
@@ -73,16 +74,16 @@ text-decoration: none;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: #111;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #111;
 }
 
 .container .text-muted {
-  margin: 20px 0;
-  text-align: center;
+    margin: 20px 0;
+    text-align: center;
 }
 
 .comments {
@@ -103,4 +104,22 @@ h1, label, p{
 
 hr{
     border-color: #666;
+}
+
+
+.comment-author{
+    color: orange;
+}
+.card-menu{
+    color: #fdfdfd;
+    background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
+}
+
+.card-menu li {
+    background-color: transparent;
+}
+
+.caption-full h4{
+    border-bottom: 1px solid gray;
+    color: orange;
 }
