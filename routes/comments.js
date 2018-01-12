@@ -32,6 +32,7 @@ router.post("/", isLoggedIn, (req, res) => {
                   comment.save();
                   card.comments.push(comment);
                   card.save();
+                  req.flash("success", "Successfully added commment");
                   res.redirect("/cards/" + card._id);
               }
            });
@@ -73,6 +74,7 @@ router.delete("/:comment_id", isLoggedIn, checkCommentOwner, (req, res) => {
         if(err){
             console.log(err);
         }else{
+            req.flash("success", "Comment deleted");
             res.redirect("/cards/" + req.params.id);
         }
     });

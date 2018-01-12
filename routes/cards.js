@@ -76,6 +76,7 @@ router.delete("/:id", isLoggedIn, checkCardOwner, (req, res) => {
      if(err){
          console.log(err);
      }else{
+         req.flash("success", "Card deleted");
          res.redirect("/cards");
      }  
    });
