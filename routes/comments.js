@@ -43,17 +43,17 @@ router.post("/", isLoggedIn, (req, res) => {
 //Edit
 router.get("/:comment_id/edit", isLoggedIn, checkCommentOwner, (req, res) => {
     Card.findById(req.params.id, (err, foundCard) => {
-        if(err){
-            console.log(err);
-        }else{
-            Comment.findById(req.params.comment_id, (err, foundComment) => {
-                if(err){
-                    console.log(err);
-                }else{
-                    res.render("comments/edit", {card_id: req.params.id, comment: foundComment});
-                }
-            });
+        if(err || !foundCard){
+            req.flash("error", "No card found");
+            return res.redirect("back");
         }
+        Comment.findById(req.params.comment_id, (err, foundComment) => {
+            if(err){
+                console.log(err);
+            } else {
+                res.render("comments/edit", {card_id: req.params.id, comment: foundComment});
+            }
+        });
     });
 });
 

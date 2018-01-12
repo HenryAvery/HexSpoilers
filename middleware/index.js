@@ -13,7 +13,7 @@ module.exports = {
     
     checkCardOwner: function(req, res, next){
             Card.findById(req.params.id, (err, foundCard) => {
-                if(err){
+                if(err || !foundCard){
                     req.flash("error", "Card not found.");
                     res.redirect("back");
                 }else{
@@ -29,7 +29,7 @@ module.exports = {
         
     checkCommentOwner: function(req, res, next){
             Comment.findById(req.params.comment_id, (err, foundComment) => {
-                if(err){
+                if(err || !foundComment){
                     req.flash("error", "Comment not found.");
                     res.redirect("back");
                 }else{

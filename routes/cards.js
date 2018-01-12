@@ -41,8 +41,9 @@ router.post("/", isLoggedIn, (req, res) => {
 //Show
 router.get("/:id", (req, res) => {
     Card.findById(req.params.id).populate("comments").exec((err, foundCard) => {
-        if(err){
-            console.log(err);
+        if(err || !foundCard){
+            req.flash("error" , "Card not found");
+            res.redirect("back");
         }else{
             res.render("cards/show", {card: foundCard});
         }
