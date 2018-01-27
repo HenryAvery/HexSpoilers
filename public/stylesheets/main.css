@@ -45,10 +45,16 @@ a:hover h4{
 a:hover {
     text-decoration: none;
 }
-
+label{
+    color: #9d9d9d;
+}
 .form-title{
     text-align: center;
     margin-bottom: 50px;
+}
+.register-error{
+    color: red;
+    list-style: none;
 }
 
 .thumbnail img {
@@ -95,7 +101,7 @@ a:hover {
     margin-top: 30px;
 }
 
-h1, label, p{
+h1, p{
     color: #fdfdfd;
 }
 

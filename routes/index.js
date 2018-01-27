@@ -11,22 +11,30 @@ router.get("/", (req, res) => {
 
 //register form         
 router.get("/register", (req, res) => {
-    res.render("register");
+    let errors = "";
+    res.render("register", {errors : errors});
 });
 
 //register logic
 router.post("/register", (req, res) => {
-    let newUser = new User({username: req.body.username});
-    User.register(newUser, req.body.password, (err, user) => {
-        if(err){
-            req.flash("error", err.message);
-            return res.redirect("register");
-        }
-        passport.authenticate("local")(req, res, () => {
-            req.flash("success", "Successfully Signed Up!");
-            res.redirect("/cards");
+    req.checkBody("password2", "Passwords do not match.").equals(req.body.password);
+    let errors = req.validationErrors();
+    if (errors) {
+        res.render("register", {errors : errors, username : req.body.username});
+        return;
+    }else{
+        let newUser = new User({username: req.body.username});
+        User.register(newUser, req.body.password, (err, user) => {
+            if(err){
+                req.flash("error", err.message);
+                return res.redirect("register");
+            }
+            passport.authenticate("local")(req, res, () => {
+                req.flash("success", "Successfully Signed Up!");
+                res.redirect("/cards");
+            });
         });
-    });
+    }
 });
 
 //login page

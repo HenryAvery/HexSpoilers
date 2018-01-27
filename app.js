@@ -4,9 +4,12 @@ const methodOverride = require("method-override"),
       mongoose       = require("mongoose"),
       passport       = require("passport"),
       express        = require("express"),
+      validator      = require("express-validator"),
       User           = require("./models/user"),
       flash          = require("connect-flash"),
       app            = express();
+
+      
       
 
 //requiring routes
@@ -21,6 +24,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");      
 app.use(flash());
+app.use(validator());
 
 
 

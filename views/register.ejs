@@ -4,21 +4,30 @@
             <h1 class="form-title">Sign Up</h1>
             <form action="/register" method="POST">
                 <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                        	<span class="glyphicon glyphicon-user"></span> 
-                        </div>
-                        <input class="form-control" required="true" autofocus="autofocus" type="text" name="username" placeholder="username" pattern=".{3,16}" title="3 to 16 characters">
-                    </div>
+                    <label for="username">Username</label>
+                    <% if (errors)  {%>
+                        <input class="form-control" required="true" value=<%= username %> type="text" name="username" pattern=".{3,16}" title="3 to 16 characters">
+                    <% }else{ %>
+                        <input class="form-control" required="true" autofocus="autofocus" type="text" name="username" pattern=".{3,16}" title="3 to 16 characters">
+                    <% } %>    
                 </div>
                 <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                        	<span class="glyphicon glyphicon-lock"></span> 
-                        </div>
-                        <input class="form-control" required="true" type="password" name="password" placeholder="password" pattern=".{5,20}" title="5 to 20 characters">
-                    </div>
+                    <label for="password">Password</label>
+                    <input class="form-control" required="true" type="password" name="password" pattern=".{5,20}" title="5 to 20 characters">
                 </div>
+                 <div class="form-group">
+                    <label for="password2">Re-type Password</label>
+                    <input class="form-control" required="true" type="password" name="password2" pattern=".{5,20}" title="5 to 20 characters">
+                </div>
+                <% if (errors) { %>
+                    <ul class="register-error">
+                        <% errors.forEach((error) => { %>
+                           <li>
+                               <%= error.msg %>
+                           </li>
+                        <% }) %>   
+                    </ul>
+                <% } %>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Sign Up!</button>
                 </div>
