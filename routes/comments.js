@@ -30,7 +30,7 @@ router.post("/", isLoggedIn, (req, res) => {
                   comment.author.id = req.user._id;
                   comment.author.username = req.user.username;
                   comment.save();
-                  card.comments.push(comment);
+                  card.comments.push(comment._id);
                   card.save();
                   req.flash("success", "Successfully added commment");
                   res.redirect("/cards/" + card._id);
