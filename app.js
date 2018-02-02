@@ -9,9 +9,6 @@ const methodOverride = require("method-override"),
       flash          = require("connect-flash"),
       app            = express();
 
-      
-      
-
 //requiring routes
 const cardRoutes = require("./routes/cards"),
    commentRoutes = require("./routes/comments"),
@@ -26,7 +23,8 @@ app.set("view engine", "ejs");
 app.use(flash());
 app.use(validator());
 
-
+//require moment
+app.locals.moment = require('moment');
 
 //passport config
 app.use(require("express-session")({

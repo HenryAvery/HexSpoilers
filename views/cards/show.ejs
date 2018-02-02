@@ -8,7 +8,8 @@
                     <h4><%=card.name%></h4>
                     <p><%= card.description %></p>
                     <p>
-                      <em>Submitted by: <%= card.author.username %></em>
+                      <em>Submitted by: <%= card.author.username %>, 
+                      <%= moment(card.createdAt).fromNow() %></em>
                     </p>
                     <% if(currentUser && card.author.id.equals(currentUser._id)) { %>
                         <a class="btn btn-warning" href="/cards/<%= card._id %>/edit">Edit</a>
@@ -30,7 +31,7 @@
                             <hr>
                             <p>
                                 <span class="comment-author"><strong><%= comment.author.username %></strong></span>
-                                <span class="pull-right">10 days ago</span>
+                                <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
                             </p>
                             <p>
                                 <%= comment.text %>
