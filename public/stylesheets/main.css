@@ -1,113 +1,161 @@
 html {
-     position: relative;
-     min-height: 100%;
+ position: relative;
+ min-height: 100%;
 }
- body {
-    /* Margin bottom by footer height */
-     margin-bottom: 60px;
-     background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black_linen_v2.png");
+
+body {
+ /* Margin bottom by footer height */
+ margin-bottom: 60px;
+ background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black_linen_v2.png");
 }
- h4{
-     color: #9d9d9d;
+
+h4 {
+ color: #9d9d9d;
 }
- a:hover h4{
-     color: #fff;
+
+a:hover h4 {
+ color: #fff;
 }
- a:hover {
-     text-decoration: none;
+
+a:hover {
+ text-decoration: none;
 }
- .thumbnail img {
-     width: 100%;
-     margin-bottom: 0px;
+
+.footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ height: 60px;
+ background-color: #111;
 }
- .thumbnail {
-     padding: 0;
-     border: 0;
-     background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
+
+.container .text-muted {
+ margin: 20px 0;
+ text-align: center;
 }
- .thumbnail .caption-full{
-     padding: 9px;
+
+.comments {
+ margin-top: 0px;
 }
- .flex {
-     display: flex;
-     flex-wrap: wrap;
+
+.main {
+ margin-top: 30px;
 }
- .footer {
-     position: absolute;
-     bottom: 0;
-     width: 100%;
-     height: 60px;
-     background-color: #111;
+
+h1,
+p {
+ color: #fdfdfd;
 }
- .container .text-muted {
-     margin: 20px 0;
-     text-align: center;
+
+.well {
+ background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
 }
- .comments {
-     margin-top: 0px;
+
+hr {
+ border-color: #666;
 }
- .main {
-     margin-top: 30px;
+
+.comment-author {
+ color: orange;
 }
- h1, p{
-     color: #fdfdfd;
-}
- .well{
-     background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
-}
- hr{
-     border-color: #666;
-}
- .comment-author{
-     color: orange;
-}
- .card-menu{
-     color: #fdfdfd;
-     background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
-}
- .card-menu li {
-     background-color: transparent;
-}
- .caption-full h4{
-     border-bottom: 1px solid gray;
-     color: orange;
-}
+
 /* Nav and jumbotron */
- .jumbotron{
-     background-image: url(http://www.rpgfan.com/pics/HEX_Shards_of_Fate/art-003.jpg);
-     background-size: 200%;
-     background-position: 13.5% 52%;
-     color: #000;
-     padding: 10px 60px 20px;
+
+.jumbotron {
+ background-image: url(http://www.rpgfan.com/pics/HEX_Shards_of_Fate/art-003.jpg);
+ background-size: 200%;
+ background-position: 13.5% 52%;
+ color: #000;
+ padding: 10px 60px 20px;
 }
- .jumbotron p {
-     color: #000;
+.jumbotron:before{
+  filter: opacity(50%);
 }
- .navbar-header .banner{
-     color: orange;
-     text-decoration: underline;
-     display: inline-block;
+
+
+.jumbotron p {
+ color: #000;
 }
- .newcard{
-     margin-top: 15px;
+
+.navbar-header .banner {
+ color: orange;
+ text-decoration: underline;
+ display: inline-block;
 }
+
+.navbar-brand {
+ padding-right: 15px;
+}
+
+.collapsed {
+ margin-right: 0px;
+}
+
+.banner {
+ margin-top: 18px;
+}
+
+.newcard {
+ margin-top: 15px;
+}
+
 /* Cards */
+
+.thumbnail img {
+ width: 100%;
+ margin-bottom: 0px;
+}
+
+.thumbnail {
+ padding: 0;
+ border: 0;
+ background-image: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
+}
+
+.thumbnail .caption-full {
+ padding: 9px;
+}
+
+.flex {
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.card-menu {
+ color: #fdfdfd;
+ background: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/black-Linen.png");
+}
+
+.card-menu li {
+ background-color: transparent;
+}
+
+.caption-full h4 {
+ border-bottom: 1px solid gray;
+ color: orange;
+}
+
 /* Forms */
- .delete-form{
-     display: inline;
+
+.delete-form {
+ display: inline;
 }
- .form-container {
-     width: 30%;
-     margin: 25px auto;
+
+.form-container {
+ width: 30%;
+ margin: 25px auto;
 }
- label{
-     color: #9d9d9d;
+
+label {
+ color: #9d9d9d;
 }
- .form-title{
-     text-align: center;
-     margin-bottom: 50px;
+
+.form-title {
+ text-align: center;
+ margin-bottom: 50px;
 }
- .register-error{
-     color: red;
-     list-style: none;
+
+.register-error {
+ color: red;
+ list-style: none;
 }
