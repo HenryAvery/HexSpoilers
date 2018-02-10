@@ -6,12 +6,22 @@ const express = require("express"),
       
 //Index
 router.get("/", (req, res) => {
-    Card.find({}, (err, allCards) => {
-       if(err){
-           console.log(err);
-       } else{
-           res.render("cards/index", {cards:allCards});
-       }
+    let perPage = 12;
+    let pageQuery = parseInt(req.query.page);
+    let pageNumber = pageQuery ? pageQuery : 1;
+    Card.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec((err, allCards) => {
+        Card.count().exec(function (err, count) {
+           if(err){
+               console.log(err);
+           } else{
+               res.render("cards/index", {
+                   cards:allCards,
+                   current: pageNumber,
+                   pages: Math.ceil(count / perPage)
+    
+               });
+           }
+        });
     });
 });
 
