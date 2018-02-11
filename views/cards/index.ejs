@@ -2,15 +2,15 @@
     
 <div class="container">
     <header class="jumbotron">
-        <div class="container text-center tester4">
+        <div class="container text-center">
             <h1>Hex Spoilers</h1>
-            <p>Check out all the cards from the upcoming set!</p>
+            <p>Check out the spoiled cards from the upcoming set!</p>
             <a class="btn btn-primary btn-lg newcard" href="/cards/new">Add New Card</a>
         </div>
     </header>
     <div class="row flex">
         <% cards.forEach((card) => { %>
-           <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+           <div class="col-lg-2 col-md-3 col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                 <a href="/cards/<%= card._id %>">
                     <div class="thumbnail">
                         <img src="<%= card.image %>">
@@ -22,9 +22,7 @@
             </div>
         <% }) %>
     </div>
-</div>
-
-<!-- Pagination -->
+    <!-- Pagination -->
 <div class="row text-center">
     <% if (pages && pages > 0) { %>
     <ul class="pagination text-center">
@@ -69,4 +67,7 @@
     </ul>
     <% } %>
 </div>
+</div>
+
+
 <% include ../partials/footer %>

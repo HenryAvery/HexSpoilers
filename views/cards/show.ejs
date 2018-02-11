@@ -1,14 +1,14 @@
 <% include ../partials/header %>
 <div class="container">
     <div class="row main">
-        <div class="col-md-4 col-md-offset-2 col-lg-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+        <div class="col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
             <div class="thumbnail">
                 <img class="img-rounded img-fluid" src="<%= card.image %>">
                 <div class="caption-full">
                     <h4><%=card.name%></h4>
                     <p><%= card.description %></p>
                     <p>
-                      <em>Submitted by: <%= card.author.username %>, 
+                      <em>Submitted by: <span class="user-name"><%= card.author.username %></span>, 
                       <%= moment(card.createdAt).fromNow() %></em>
                     </p>
                     <% if(currentUser && card.author.id.equals(currentUser._id)) { %>
@@ -20,21 +20,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 col-md-offset-0 col-lg-7 col-lg-offset-1 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1  comments">
+        <div class="col-md-6 col-md-offset-1 col-lg-7 col-lg-offset-1 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1  comments">
             <div class="well">
-                <div class="text-right">
-                    <a class="btn btn-success" href="/cards/<%= card._id %>/comments/new">Add New Comment</a>
+                <div class="text-center">
+                    <a class="btn btn-sample center-block" href="/cards/<%= card._id %>/comments/new">Add New Comment</a>
                 </div>
                 <% card.comments.forEach( (comment) => { %>
                     <div class="row">
                         <div class="col-md-12">
                             <hr>
                             <p>
-                                <span class="comment-author"><strong><%= comment.author.username %></strong></span>
+                                <span class="user-name"><%= comment.author.username %></span>
                                 <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
                             </p>
                             <p>
-                                <%= comment.text %>
+                                <span class="comment"><%= comment.text %></span>
                             </p>
                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
                             <a class="btn btn-xs btn-warning" href="/cards/<%=card._id %>/comments/<%=comment._id %>/edit">Edit</a>
