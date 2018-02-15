@@ -2,7 +2,33 @@ const express = require("express"),
       router  = express.Router(),
       Card    = require("../models/card"),
       middleware = require("../middleware"),
+      multer = require('multer'),
+      cloudinary = require('cloudinary'),
       {isLoggedIn, checkCardOwner} = middleware;
+      
+ 
+
+const storage = multer.diskStorage({
+  filename: function(req, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  }
+});
+const imageFilter = function (req, file, cb) {
+    // accept image files only
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+        return cb(new Error('Filetype not supported. Please try jpg, png, or gif'), false);
+    }
+    cb(null, true);
+};
+const upload = multer({ storage: storage, fileFilter: imageFilter});
+
+
+cloudinary.config({ 
+  cloud_name: 'hexspoilers', 
+  api_key: process.env.CLOUDINARY_API_KEY, 
+  api_secret: process.env.CLOUDINARY_API_SECRET
+}); 
+ 
       
 //Index
 router.get("/", (req, res) => {
@@ -31,21 +57,24 @@ router.get("/new", isLoggedIn, (req, res) => {
 });
 
 //Create
-router.post("/", isLoggedIn, (req, res) => {
+router.post("/", isLoggedIn, upload.single('image'), (req, res) => {
     
-    req.body.card.author = {
+      cloudinary.uploader.upload(req.file.path, function(result) {
+      // add cloudinary url for the image to the card object under image property
+      req.body.card.image = result.secure_url;
+      // add author to card
+      req.body.card.author = {
         id: req.user._id,
-        username: req.user.username            
-    };
-
-    Card.create(req.body.card, (err, newCard) => {
-        if(err){
-            console.log(err);
-            res.render("new");
-        }else {
-            res.redirect("/cards");
+        username: req.user.username
+      };
+      Card.create(req.body.card, function(err, card) {
+        if (err) {
+          req.flash('error', err.message);
+          return res.redirect('back');
         }
-    });
+        res.redirect('/cards/' + card.id);
+        });
+      });
 });   
 
 //Show
