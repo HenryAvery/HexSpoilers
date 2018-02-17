@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const cardSchema = mongoose.Schema({
     name: String,
+    public_id: String,
     image: String, 
     description: String,
     createdAt: { type: Date, default: Date.now }, 

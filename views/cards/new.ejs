@@ -1,31 +1,35 @@
 <% include ../partials/header %>
-<div class="container">
-    <div class="row">
-        <div class="form-container">
-            <h1 class="form-title">Add a new Card</h1>
-                <form action="/cards" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input class="form-control" type="text" name="card[name]" placeholder="Vampire King">
-                    </div>
-                    <div class="form-group ">
-                        <label for="image">Image Url</label>
-                        <input class="form-control" required="true" type="text" name="card[image]" placeholder="http://...">
-                        <a target="_blank" href="https://hex.tcgbrowser.com/#!/cards">Images can be found here.</a>
-                    </div>
-                    <div class="form-group ">
-                        <label for="image">Image Upload</label>
-                        <input type="file" id="image" name="image" accept="image/*" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description/Impressions</label>
-                        <input class="form-control" type="text" name="card[description]" placeholder="I love this card!!!">
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                    </div>            
-                </form>
-            <a href="/cards">Go Back</a>
+<div class="well">
+    <div class="container">
+        <div class="row">
+            <div class="form-container">
+                <h1 class="form-title">Add a new Card</h1>
+                    <form action="/cards" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="image">Image Upload</label>
+                            <input type="file" id="image" name="image" accept="image/*" required>
+                        </div>    
+                        <div class="form-group">    
+                            <label for="name">Name</label>
+                            <input class="form-control" type="text" name="card[name]" placeholder="Vampire King">
+                        </div>
+                        
+                        <!--<div class="form-group ">-->
+                        <!--    <label for="image">Image Url</label>-->
+                        <!--    <input class="form-control" required="true" type="text" name="card[image]" placeholder="http://...">-->
+                        <!--    <a target="_blank" href="https://hex.tcgbrowser.com/#!/cards">Images can be found here.</a>-->
+                        <!--</div>-->
+    
+                        <div class="form-group">
+                            <label for="description">Description/Impressions</label>
+                            <input class="form-control" type="text" name="card[description]" placeholder="I love this card!!!">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                        </div>            
+                    </form>
+                <a href="/cards">Go Back</a>
+            </div>
         </div>
     </div>
 </div>

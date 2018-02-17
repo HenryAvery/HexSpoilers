@@ -8,20 +8,21 @@ const express = require("express"),
       
  
 
-const storage = multer.diskStorage({
-  filename: function(req, file, callback) {
+let storage = multer.diskStorage({
+  filename: (req, file, callback) => {
     callback(null, Date.now() + file.originalname);
   }
 });
-const imageFilter = function (req, file, cb) {
+
+let imageFilter = function (req, file, cb) {
     // accept image files only
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
         return cb(new Error('Filetype not supported. Please try jpg, png, or gif'), false);
     }
     cb(null, true);
 };
-const upload = multer({ storage: storage, fileFilter: imageFilter});
 
+let upload = multer({ storage: storage, fileFilter: imageFilter});
 
 cloudinary.config({ 
   cloud_name: 'hexspoilers', 
@@ -67,6 +68,8 @@ router.post("/", isLoggedIn, upload.single('image'), (req, res) => {
         id: req.user._id,
         username: req.user.username
       };
+      req.body.card.public_id = result.public_id;
+      
       Card.create(req.body.card, function(err, card) {
         if (err) {
           req.flash('error', err.message);
@@ -112,7 +115,18 @@ router.put("/:id", isLoggedIn, checkCardOwner, (req, res) => {
 });
 //Delete
 router.delete("/:id", isLoggedIn, checkCardOwner, (req, res) => {
+   
+   Card.findById(req.params.id, (err, foundCard) => {
+       if(err){
+            console.log(err);
+        }else{
+               cloudinary.uploader.destroy(foundCard.public_id);
+        }
+
+   });
+   
    Card.findByIdAndRemove(req.params.id, (err) => {
+       
      if(err){
          console.log(err);
      }else{

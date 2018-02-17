@@ -143,6 +143,9 @@ hr {
 
 
 /**** Forms ****/
+#image{
+  color: white;
+}
 
 .delete-form {
   display: inline;
@@ -168,9 +171,22 @@ label {
 }
 
 
+
 @media screen and (min-width: 1500px) {
   .container {
     width: 1400px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .form-container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .form-container {
+    width: 80%;
   }
 }
 
