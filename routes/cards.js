@@ -33,10 +33,16 @@ cloudinary.config({
       
 //Index
 router.get("/", (req, res) => {
+    
     let perPage = 12;
     let pageQuery = parseInt(req.query.page);
     let pageNumber = pageQuery ? pageQuery : 1;
+    
     Card.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec((err, allCards) => {
+        if(err){
+               console.log(err);
+           } else{
+        
         Card.count().exec(function (err, count) {
            if(err){
                console.log(err);
@@ -47,8 +53,9 @@ router.get("/", (req, res) => {
                    pages: Math.ceil(count / perPage)
     
                });
-           }
-        });
+             }
+         });
+       }
     });
 });
 
@@ -59,6 +66,10 @@ router.get("/new", isLoggedIn, (req, res) => {
 
 //Create
 router.post("/", isLoggedIn, upload.single('image'), (req, res) => {
+    
+      console.log(req.body);
+      
+      if(req.file){
     
       cloudinary.uploader.upload(req.file.path, function(result) {
       // add cloudinary url for the image to the card object under image property
@@ -78,6 +89,21 @@ router.post("/", isLoggedIn, upload.single('image'), (req, res) => {
         res.redirect('/cards/' + card.id);
         });
       });
+      }
+       else{
+                 req.body.card.author = {
+        id: req.user._id,
+        username: req.user.username
+      };
+      
+      Card.create(req.body.card, function(err, card) {
+        if (err) {
+          req.flash('error', err.message);
+          return res.redirect('back');
+        }
+        res.redirect('/cards/' + card.id);
+        });
+       }
 });   
 
 //Show

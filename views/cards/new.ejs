@@ -1,27 +1,36 @@
 <% include ../partials/header %>
+    <script type="text/javascript" src="/js/script.js"></script>
 <div class="well">
     <div class="container">
         <div class="row">
             <div class="form-container">
                 <h1 class="form-title">Add a new Card</h1>
                     <form action="/cards" method="POST" enctype="multipart/form-data">
+                        <div class="well">
                         <div class="form-group">
+                            <input type="radio" id="url_choice" name="image" onclick="show1();" value="url" checked>
+                            <label for="url_choice">URL upload</label>
+                        
+                            <input type="radio" id="local_choice" name="image" onclick="show2();"  value="local">
+                            <label for="local_choice">Local File Upload</label>
+                        </div>   
+                        <div class="form-group"  id="img_url">
+                            <label for="image">Image Url</label>
+                            <input class="form-control" type="text" name="card[image]" placeholder="http://...">
+                        </div>
+                        
+                        <div class="form-group hiden" id="local_image">
                             <label for="image">Image Upload</label>
-                            <input type="file" id="image" name="image" accept="image/*" required>
-                        </div>    
+                            <input type="file" id="image" name="image" accept="image/*" >
+                        </div>  
+                        </div>
                         <div class="form-group">    
                             <label for="name">Name</label>
                             <input class="form-control" type="text" name="card[name]" placeholder="Vampire King">
                         </div>
-                        
-                        <!--<div class="form-group ">-->
-                        <!--    <label for="image">Image Url</label>-->
-                        <!--    <input class="form-control" required="true" type="text" name="card[image]" placeholder="http://...">-->
-                        <!--    <a target="_blank" href="https://hex.tcgbrowser.com/#!/cards">Images can be found here.</a>-->
-                        <!--</div>-->
-    
+
                         <div class="form-group">
-                            <label for="description">Description/Impressions</label>
+                            <label for="description">Description</label>
                             <input class="form-control" type="text" name="card[description]" placeholder="I love this card!!!">
                         </div>
                         <div class="form-group">

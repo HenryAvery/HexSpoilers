@@ -14,7 +14,7 @@ h4 {
 }
 
 .user-name {
-  color: #D15527;
+  color: #f45d00;
   font-weight: bold;
 }
 
@@ -68,13 +68,13 @@ p {
 
 
 .navbar-header .banner {
-  color: #D15527;
+  color: #f45d00;
   text-decoration: underline;
   display: inline-block;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #D15527;
+  color: #f45d00
 }
 
 .collapsed {
@@ -127,7 +127,7 @@ p {
 
 .caption-full h4 {
   border-bottom: 1px solid gray;
-  color: #D15527;
+  color: #f45d00;
 }
 
 
@@ -170,6 +170,9 @@ label {
   list-style: none;
 }
 
+.hiden {
+  display: none;
+}
 
 
 @media screen and (min-width: 1500px) {
@@ -209,7 +212,7 @@ ul.pagination > li > a:hover {
   border-color: #ddd;
   color: #ddd;
   background: none;
-  background-color: #D15527;
+  background-color: #f45d00
 }
 ul.pagination > li > a:hover {
   background-color: #7F2200;
@@ -225,7 +228,7 @@ ul.pagination > .disabled > a:hover{
 /* custom bootstrap button color */
 .btn-orange {
   color: #ffffff;
-  background-color: #D15527;
+  background-color: #f45d00;
   border-color: #000000;
 }
 
@@ -252,7 +255,7 @@ fieldset[disabled] .btn-orange,
 .btn-orange[disabled]:hover,
 fieldset[disabled] .btn-orange:hover,
 .btn-orange.disabled:focus,
-.btn-orange[disabled]:focus,
+.btn-orange[disabled]:focus,o
 fieldset[disabled] .btn-orange:focus,
 .btn-orange.disabled:active,
 .btn-orange[disabled]:active,
@@ -260,11 +263,11 @@ fieldset[disabled] .btn-orange:active,
 .btn-orange.disabled.active,
 .btn-orange[disabled].active,
 fieldset[disabled] .btn-orange.active {
-  background-color: #D15527;
+  background-color: #f45d00;
   border-color: #000000;
 }
 
 .btn-orange .badge {
-  color: #D15527;
+  color: #f45d00;
   background-color: #ffffff;
 }
