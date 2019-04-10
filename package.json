@@ -4,7 +4,7 @@
   "description": "Viewer for HEXTCG Spoilers of new sets ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Henry Avery",
   "license": "ISC",
