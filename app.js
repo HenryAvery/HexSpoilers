@@ -15,7 +15,7 @@ const cardRoutes = require("./routes/cards"),
    indexRoutes      = require("./routes/index");
      
 mongoose.Promise = global.Promise;
-mongoose.connect("MONGODB_URI");
+mongoose.connect(process.env.MONGODB_URI);
 app.use(bodyParser.urlencoded({extended: true}));   
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
