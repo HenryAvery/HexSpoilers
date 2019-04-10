@@ -95,8 +95,12 @@ p {
 .thumbnail img {
   width: 100%;
   margin-bottom: 0px;
+  border-radius: 15px;
 }
 
+.thumbnail .large-img {
+  border-radius: 21px;
+}
 .thumbnail {
   padding: 0;
   border: 0;
